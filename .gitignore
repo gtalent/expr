@@ -1,0 +1,7 @@
+main
+_go_.*
+_obj
+_test
+*.out
+_gotest_.*
+_testmain.*
