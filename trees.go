@@ -17,7 +17,7 @@ package expr
 
 import (
 	"strconv"
-	"wombat/engine/expr/lex"
+	"github.com/gtalent/expr/lex"
 )
 
 func isStringOp(node1, node2 lex.Token) bool {
