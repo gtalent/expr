@@ -17,7 +17,7 @@ package expr
 
 import (
 	"strings"
-	"wombat/engine/expr/lex"
+	"github.com/gtalent/expr/lex"
 )
 
 var operators = func() []string {

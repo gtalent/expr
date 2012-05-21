@@ -26,7 +26,7 @@ func Identifiers(input string) []string {
 }
 
 type Token struct {
-	TokType int
+	TokType  int
 	TokValue interface{}
 }
 
@@ -62,7 +62,7 @@ func (me *Token) String() string {
 	case int:
 		return strconv.Itoa(me.TokValue.(int))
 	case bool:
-		return strconv.Btoa(me.TokValue.(bool))
+		return strconv.FormatBool(me.TokValue.(bool))
 	case string:
 		return me.TokValue.(string)
 	}
@@ -78,7 +78,6 @@ func (me *Token) Bool() bool {
 	return me.TokValue.(bool)
 }
 
-
 func Tokens(input string) []Token {
 	var tokens []Token
 
@@ -89,7 +88,7 @@ func Tokens(input string) []Token {
 		if t.TokType == IntLiteral {
 			t.TokValue, _ = strconv.Atoi(t.TokValue.(string))
 		} else if t.TokType == BoolLiteral {
-			t.TokValue, _ = strconv.Atob(t.TokValue.(string))
+			t.TokValue, _ = strconv.ParseBool(t.TokValue.(string))
 		}
 		tokens = append(tokens, t)
 	}

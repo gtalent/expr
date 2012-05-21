@@ -20,7 +20,7 @@ import (
 )
 
 type Value struct {
-	Type int
+	Type  int
 	Value interface{}
 }
 
@@ -43,7 +43,7 @@ func (me Value) String() string {
 	case int:
 		return strconv.Itoa(me.Value.(int))
 	case bool:
-		return strconv.Btoa(me.Value.(bool))
+		return strconv.FormatBool(me.Value.(bool))
 	case string:
 		return me.Value.(string)
 	}
@@ -58,5 +58,3 @@ func (me *Value) SetBool(val bool) {
 func (me Value) Bool() bool {
 	return me.Value.(bool)
 }
-
-
