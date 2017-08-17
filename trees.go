@@ -1,5 +1,5 @@
 /*
-   Copyright 2011-2012 gtalent2@gmail.com
+   Copyright 2011-2017 gtalent2@gmail.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,11 +13,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
 package expr
 
 import (
-	"strconv"
 	"github.com/gtalent/expr/lex"
+	"strconv"
 )
 
 func isStringOp(node1, node2 lex.Token) bool {
@@ -27,7 +28,6 @@ func isStringOp(node1, node2 lex.Token) bool {
 func isBoolOp(node1, node2 lex.Token) bool {
 	return node1.Type() == lex.BoolLiteral || node2.Type() == lex.BoolLiteral
 }
-
 
 type expression []lex.Token
 
@@ -103,13 +103,11 @@ func (me expression) Value() (lex.Token, bool) {
 			retval, _ := strconv.Atoi(expression[1].String())
 			t.SetInt(-retval)
 			return t, true
-		} else {
-			return t, false
 		}
+		return t, false
 	}
 	return t, true
 }
-
 
 type parseTree struct {
 	node1    expression

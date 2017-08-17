@@ -1,5 +1,5 @@
 /*
-   Copyright 2011-2012 gtalent2@gmail.com
+   Copyright 2011-2017 gtalent2@gmail.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,11 +13,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
 package expr
 
 import (
-	"strings"
 	"github.com/gtalent/expr/lex"
+	"strings"
 )
 
 var operators = func() []string {
@@ -36,7 +37,6 @@ var operators = func() []string {
 	ops = append(ops, ")")
 	return ops
 }()
-
 
 func fixNegatives(exp []lex.Token) []lex.Token {
 	var prev lex.Token
@@ -71,7 +71,7 @@ func fixIdents(exp string, vars func(string) (Value, bool)) ([]lex.Token, bool) 
 	return toks, true
 }
 
-//Returns a Value object, and an "ok" bool that indicates whether or not the expression could be parsed.
+// Evaluate returns a Value object, and an "ok" bool that indicates whether or not the expression could be parsed.
 func Evaluate(expression string, variables func(string) (Value, bool)) (Value, bool) {
 	expression = strings.Replace(expression, " ", "", -1)
 	expression = strings.Replace(expression, "\n", "", -1)
